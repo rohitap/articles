@@ -1,7 +1,93 @@
-const ArticlesForm = () => (
-  <div>
-    FORM
-  </div>
-)
+import { useState } from 'react'
+import { useForm } from "react-hook-form"
+import { Container, Button, Grid, Paper, TextField } from '@material-ui/core'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+import ApiClient from '../../../utils/axios'
+import useAsync from '../../../hooks/useAsync'
+import useStyles from './styles'
+
+const schema = yup.object().shape({
+  title: yup.string().required(),
+  intro: yup.string().required(),
+  author: yup.string().email().required(),
+});
+
+const ArticlesForm = () => {
+  const classes = useStyles()
+  // const { register, handleSubmit, formState } = useForm({
+  //   resolver: yupResolver(schema)
+  // })
+  const [formFields, setFormFields] = useState({
+    title: null,
+    author: null,
+    intro: null,
+    date: null,
+  })
+
+  const { isLoading, err, res, asyncFunc: addArticle } = useAsync(ApiClient.addArticles)
+
+  const handleFieldValueChange = field => event => setFormFields({ ...formFields, [field]: event.target.value})
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    addArticle(formFields)
+  }
+
+  return (
+    <form onSubmit={onSubmit}>
+      <Container className={classes.formGrid} >
+        <Grid spacing={3} justify="space-between" container>
+          <Grid item xs={6} sm={6}>
+          <TextField
+            onChange={handleFieldValueChange('title')}
+              id="title"
+              label="Title"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6} sm={6}>
+          <TextField
+            onChange={handleFieldValueChange('author')}
+              id="authorEmail"
+              label="Author Email"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item sm={12}>
+          <TextField
+            onChange={handleFieldValueChange('intro')}
+              id="introText"
+              label="Intros text"
+              multiline
+              fullWidth
+              rowsMax={2}
+              inputProps={{
+                maxLength: 255
+              }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6}>
+            <TextField
+              onChange={handleFieldValueChange('date')} 
+              label="Date" 
+              type='date' 
+              InputLabelProps={{ shrink: true }} 
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+        <div>
+          <Button className={classes.submitBtn} color='primary' variant='contained' type='submit'> Save Your Article </Button>
+        </div>
+      </Container>
+    </form>
+  )
+}
 
 export default ArticlesForm
