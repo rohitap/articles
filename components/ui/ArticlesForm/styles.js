@@ -8,14 +8,20 @@ const useStyles = makeStyles(() => ({
     maxWidth: '50%',
     margin: 'auto',
   },
-  formGrid: {
+  form: {
     outline: 'thick auto black',
-    marginTop: '40px',
     padding: '24px',
+    overFlow: 'auto'
+  },
+  formGrid: {
+    marginTop: '40px',
   },
   submitBtn: {
     float: 'right',
     margin: '20px'
+  },
+  formHeading: {
+    textAlign: 'center',
   }
 }))
 

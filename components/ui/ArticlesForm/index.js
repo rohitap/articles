@@ -27,7 +27,8 @@ const ArticlesForm = () => {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className={classes.form} onSubmit={onSubmit}>
+      <div className={classes.formHeading}><h1> Add Your Article</h1></div>
       <Container className={classes.formGrid} >
         <Grid spacing={3} justify="space-between" container>
           <Grid item xs={6} sm={6}>
