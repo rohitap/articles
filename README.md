@@ -33,7 +33,7 @@ npm run start
 * Add a form validating/helping library
 * Add validations for the body in the POST request for adding an article
 * Add a database rather used a common data arrays
-
+* Add loaders for table loading and submit button. Also, couldn't add    acknowledgement for successful adding of the article
 ### Inside the application
 * Articles can be viewed at /article
 * Articles can be added using the form at /add-articles
