@@ -1,7 +1,9 @@
-const ArticlesForm = () => (
-  <div>
-    TESEE
-  </div>
-)
+import ArticleList from '../components/ui/ArticleList'
 
-export default ArticlesForm
+const Articles = () => {
+  return (
+    <ArticleList/>
+  )
+}
+
+export default Articles

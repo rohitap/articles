@@ -15,7 +15,7 @@ class ApiClient {
 
   postRequest = (url, config) => this.makeRequest(url, 'POST', config)
 
-  // getArticles = () => this.getRequest('/records')
+  getArticles = () => this.getRequest('/articles/')
   
   addArticles = (data) => this.postRequest('/articles/', data)
 }

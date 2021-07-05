@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import { Container } from '@material-ui/core'
+import Header from '../components/layout/Header'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import classes from '../styles/Common.module.css'
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Header />
+      <Container className={classes.container}>
+        <Component {...pageProps} />
+      </Container>
+    </>
+  )
 }
 
-export default MyApp
+export default App

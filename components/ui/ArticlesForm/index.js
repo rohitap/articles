@@ -1,24 +1,15 @@
 import { useState } from 'react'
-import { useForm } from "react-hook-form"
-import { Container, Button, Grid, Paper, TextField } from '@material-ui/core'
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import { Container, Button, Grid, TextField } from '@material-ui/core'
 
 import ApiClient from '../../../utils/axios'
 import useAsync from '../../../hooks/useAsync'
 import useStyles from './styles'
 
-const schema = yup.object().shape({
-  title: yup.string().required(),
-  intro: yup.string().required(),
-  author: yup.string().email().required(),
-});
+
 
 const ArticlesForm = () => {
   const classes = useStyles()
-  // const { register, handleSubmit, formState } = useForm({
-  //   resolver: yupResolver(schema)
-  // })
+
   const [formFields, setFormFields] = useState({
     title: null,
     author: null,

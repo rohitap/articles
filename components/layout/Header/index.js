@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router'
 
-import {Tabs,Tab, AppBar} from '@material-ui/core'
+import { Tabs,Tab, AppBar } from '@material-ui/core'
 import useStyles from './styles'
 
 
@@ -16,10 +16,12 @@ const NavHeader = () => {
   }
   return (
     <AppBar position="static" className={classes.appBar}>
+      <div className={classes.tabsContainer}>
     <Tabs value={tab} onChange={handleTabChange} aria-label="simple tabs example">
       <Tab label="Articles"/>
       <Tab label="Publish Article"/>
     </Tabs>
+    </div>
   </AppBar>  
   )
 }
