@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 
 import {Tabs,Tab, AppBar} from '@material-ui/core'
 import useStyles from './styles'
-import { route } from 'next/dist/next-server/server/router';
 
 
 const NavHeader = () => {
@@ -11,10 +10,9 @@ const NavHeader = () => {
   const classes = useStyles()
   const router = useRouter()
 
-  // const handleTabChange = () => router.push('/articles')
   const handleTabChange = (event, newValue) => {
     setTab(newValue)
-    newValue === 0 ? router.push('/article') : router.push('/form')
+    newValue === 0 ? router.push('/article') : router.push('/add-article')
   }
   return (
     <AppBar position="static" className={classes.appBar}>
